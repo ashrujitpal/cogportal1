@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FAB - Developer Portal</title>
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+
+    <nav class="navbar is-spaced" role="navigation" aria-label="main navigation">
+      <div class="container">
+          <div class="navbar-brand">
+              <a class="navbar-item" href="index.html">
+                <img src="/images/fab-logo.svg" width="90">
+              </a>
+          
+              <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-start">
+                <a href="#" th:href="@{/fabapis/}" class="navbar-item">
+                  Home
+                </a>
+          
+                <a class="navbar-item">
+                  Getting Started
+                </a>
+          
+                <a href="api-catalouge.html" class="navbar-item">
+                  API Catalouge
+                </a>
+              </div>
+          
+              <div class="navbar-end">
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <a class="button is-primary">
+                      <strong>Sign up</strong>
+                    </a>
+                    <a class="button is-light">
+                      Log in
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+      <!-- /.container -->
+    </nav>
+
+    <header class="hero is-primary  hero-gradient">
+      <div class="hero-body">
+        <form th:method="POST" th:action="@{/fabapis/swagger/}">
+        <div class="container">
+          <div class="columns is-vcentered">
+
+            <div class="page-info column is-10">
+              <h1 class="title" th:text="${apidetails.apiName}"> </h1>
+            </div>
+
+            <div class="column is-2 has-text-right">
+              <div class="columns is-multiline">
+
+                <div class="column is-12">
+                  <a class="button is-primary is-fullwidth" th:onclick="|window.location.href='@{${apidetails.apiDevportalLink}}'|">API Console</a>
+                </div>
+
+                <div class="column is-12">
+                   <input type="hidden" name="swaggerName" th:value="${apidetails.swaggerName}" />
+                  <button class="button is-primary is-fullwidth" type="submit">Wiki</button>
+                </div>
+
+                <div class="column is-12">
+                  <a class="button is-primary is-fullwidth">Discussions</a>
+                </div>
+                
+              </div>
+            </div>
+
+          </div>
+        </div>
+        </form>
+      </div>
+    </header>
+
+    <section class="page-breadcrumb has-background-light">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+          <ul>
+            <li><a href="/fabapis/">Home</a></li>
+            <li><a href="#" th:href="@{/fabapis/smartbank}">API Catalouge</a></li>
+            <li class="is-active"><a href="#" aria-current="page" th:text="${apidetails.apiName}">apiName</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+    <!-- /.page-breadcrumb -->
+
+    <section class="section content">
+      <div class="container">
+        <div class="columns is-multiline">
+
+            <div class="left-content column is-8">
+              <ul class="content-list">
+                <li><b>Version:</b> <a th:text="${apidetails.apiVersion}" /></li>
+                <li><b>Created by:</b> <a th:text="${apidetails.apiOwner}" /></li>
+                <li><b>Updated:</b> Wednesday, 1st May 2019</li>
+                <li><b>Status:</b> <span class="tag is-success" th:text="${apidetails.apiStatus}"></span></li>
+              </ul>
+              <p th:text="${apidetails.apiDescription}" ></p>
+            </div>
+
+            <div class="right-content column is-4 has-background-white-ter">
+              <h3>Key Features</h3>
+              <ul>
+                <li th:text="${apidetails.keyFeature1}" ></li>
+				<li th:text="${apidetails.keyFeature2}" ></li>
+				<li th:text="${apidetails.keyFeature3}" ></li>
+				<li th:text="${apidetails.keyFeature4}" ></li>	
+                
+              </ul>
+            </div>
+
+        </div>
+      </div>
+      <!-- /.container -->
+    </section>
+    <!-- /.content -->
+
+    <footer class="footer is-primary">
+      <div class="content has-text-centered">
+        <div class="columns is-multiline">
+          <div class="column is-12">
+            <img src="images/fab-logo.svg" width="100px" alt="">
+          </div>
+          <div class="column is-12">
+            <p>Copyright &copy; 2019 FAB. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="text/javascript" src="lib/main.js"></script>
+  </body>
+</html>

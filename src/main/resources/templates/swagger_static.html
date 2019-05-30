@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FAB - Developer Portal</title>
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+
+    <nav class="navbar is-spaced" role="navigation" aria-label="main navigation">
+      <div class="container">
+          <div class="navbar-brand">
+              <a class="navbar-item" href="index.html">
+                <img src="/images/fab-logo.svg" width="90">
+              </a>
+          
+              <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-start">
+                <a href="/index.html" class="navbar-item">
+                  Home
+                </a>
+          
+                <a class="navbar-item">
+                  Getting Started
+                </a>
+          
+                <a href="/api-catalouge.html" class="navbar-item">
+                  API Catalouge
+                </a>
+              </div>
+          
+              <div class="navbar-end">
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <a class="button is-primary">
+                      <strong>Sign up</strong>
+                    </a>
+                    <a class="button is-light">
+                      Log in
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+      <!-- /.container -->
+    </nav>
+
+    <header class="hero is-primary  hero-gradient">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            API Catalouge
+          </h1>
+          <h2 class="subtitle">
+              Navigate to your API product
+          </h2>
+        </div>
+      </div>
+    </header>
+
+    <section class="page-breadcrumb has-background-light">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Breadcrumb</a></li>
+            <li class="is-active"><a href="#" aria-current="page">API Catalouge</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+    <!-- /.page-breadcrumb -->
+
+    <section class="section">
+      <div class="container">
+        <div class="columns is-multiline">
+          <div class="column">
+            <div class="request-block__container post">
+              <header class="request-block__header">
+                <span class="tag is-success is-medium"">POST</span>
+                <code>/pet</code>
+                <span class="request-block__header--desc">
+                  Add a new pet to the store
+                </span>
+              </header>
+              <section class="request-block__content content">
+                <div class="columns is-multiline">
+                  <div class="column is-4">
+                    <h6 class="request-block__content--title">
+                      Name
+                    </h6>
+                    <p><strong>Body</strong> <small class="has-text-danger">*required</small></p>
+                    <p><code>(body)</code></p>
+                  </div>
+                  <div class="column is-8">
+                    <h6 class="request-block__content--title">
+                      Description
+                    </h6>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi, voluptate, maiores voluptatem sit enim sequi eveniet itaque eos officia aliquid eius repudiandae quo harum animi officiis at ad! Neque!</p>
+
+                    <div class="highlight-code">
+                        <pre class='code code-css'>
+                          <code>
+                            button {
+                              width:20px;
+                              height:28px;
+                              color:#fff;
+                              font-size:28px;
+                              padding:11px 15px;
+                              border-radius:5px;
+                              background:#14ADE5;
+                            }
+                        </code>
+                        </pre>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <div class="request-block__container put">
+              <header class="request-block__header">
+                <span class="tag is-warning is-medium"">PUT</span>
+                <code>/pet</code>
+                <span class="request-block__header--desc">
+                  Add a new pet to the store
+                </span>
+              </header>
+              <section class="request-block__content content">
+                <div class="columns is-multiline">
+                  <div class="column is-4">
+                    <h6 class="request-block__content--title">
+                      Name
+                    </h6>
+                  </div>
+                  <div class="column is-8">
+                    <h6 class="request-block__content--title">
+                      Description
+                    </h6>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi, voluptate, maiores voluptatem sit enim sequi eveniet itaque eos officia aliquid eius repudiandae quo harum animi officiis at ad! Neque!</p>
+
+                    <div class="highlight-code">
+                        <pre class='code code-css'>
+                          <code>
+                            button {
+                              width:20px;
+                              height:28px;
+                              color:#fff;
+                              font-size:28px;
+                              padding:11px 15px;
+                              border-radius:5px;
+                              background:#14ADE5;
+                            }
+                        </code>
+                        </pre>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <div class="request-block__container get">
+              <header class="request-block__header">
+                <span class="tag is-info is-medium"">GET</span>
+                <code>/pet/findByStatus</code>
+                <span class="request-block__header--desc">
+                  Add a new pet to the store
+                </span>
+              </header>
+              <section class="request-block__content content">
+                <div class="columns is-multiline">
+                  <div class="column is-4">
+                    <h6 class="request-block__content--title">
+                      Name
+                    </h6>
+                  </div>
+                  <div class="column is-8">
+                    <h6 class="request-block__content--title">
+                      Description
+                    </h6>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi, voluptate, maiores voluptatem sit enim sequi eveniet itaque eos officia aliquid eius repudiandae quo harum animi officiis at ad! Neque!</p>
+
+                    <div class="highlight-code">
+                        <pre class='code code-css'>
+                          <code>
+                            button {
+                              width:20px;
+                              height:28px;
+                              color:#fff;
+                              font-size:28px;
+                              padding:11px 15px;
+                              border-radius:5px;
+                              background:#14ADE5;
+                            }
+                        </code>
+                        </pre>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <div class="request-block__container deprecated  has-text-grey-light">
+              <header class="request-block__header">
+                <span class="tag is-light has-text-grey-light is-medium"">GET</span>
+                <code class=" has-text-grey-light">/pet/findByStatus</code>
+                <span class="request-block__header--desc">
+                  Add a new pet to the store
+                </span>
+              </header>
+              <section class="request-block__content content">
+                <div class="columns is-multiline">
+                  <div class="column is-4">
+                    <h6 class="request-block__content--title">
+                      Name
+                    </h6>
+                  </div>
+                  <div class="column is-8">
+                    <h6 class="request-block__content--title">
+                      Description
+                    </h6>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi, voluptate, maiores voluptatem sit enim sequi eveniet itaque eos officia aliquid eius repudiandae quo harum animi officiis at ad! Neque!</p>
+
+                    <div class="highlight-code">
+                        <pre class='code code-css'>
+                          <code>
+                            button {
+                              width:20px;
+                              height:28px;
+                              color:#fff;
+                              font-size:28px;
+                              padding:11px 15px;
+                              border-radius:5px;
+                              background:#14ADE5;
+                            }
+                        </code>
+                        </pre>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- /.container -->
+    </section>
+    <!-- /.content -->
+
+    <footer class="footer is-primary">
+      <div class="content has-text-centered">
+        <div class="columns is-multiline">
+          <div class="column is-12">
+            <img src="images/fab-logo.svg" width="100px" alt="">
+          </div>
+          <div class="column is-12">
+            <p>Copyright &copy; 2019 FAB. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/main.js"></script>
+  </body>
+</html>

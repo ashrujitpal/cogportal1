@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FAB API Portal</title>
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+
+    <nav class="navbar is-spaced" role="navigation" aria-label="main navigation">
+      <div class="container">
+          <div class="navbar-brand">
+              <a class="navbar-item" href="https://bulma.io">
+                <img src="/images/fab-logo.svg" width="90">
+              </a>
+          
+              <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-start">
+                <a class="navbar-item"><a href="#" th:href="@{/fabapis/}">
+                  Home
+                </a>
+          
+                <a class="navbar-item">
+                  Documentation
+                </a>
+          
+                <div class="navbar-item has-dropdown is-hoverable">
+                  <a class="navbar-link">
+                    More
+                  </a>
+          
+                  <div class="navbar-dropdown">
+                    <a class="navbar-item">
+                      About
+                    </a>
+                    <a class="navbar-item">
+                      Jobs
+                    </a>
+                    <a class="navbar-item">
+                      Contact
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item">
+                      Report an issue
+                    </a>
+                  </div>
+                </div>
+              </div>
+          
+              <!-- <div class="navbar-end">
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <a class="button is-primary">
+                      <strong>Sign up</strong>
+                    </a>
+                    <a class="button is-light">
+                      Log in
+                    </a>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+      </div>
+      <!-- /.container -->
+    </nav>
+
+<!--     <section class="hero is-primary hero-gradient is-medium">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns">
+            <div class="column is-5">
+            <div class="row is -5">	
+              <h1 class="title is-size-1">
+                Innovate banking, <br>
+                Launch products, <br>
+                Shape data
+              </h1>
+              <p class="subtitle is-size-5">
+                  APIs enable secure, controlled, and cost-effective access to data and/or functionality. It is relevant to stress that “open” does not mean that every third party can access a bank’s system at their discretion.
+              </p>
+              </div>
+              <div class="row is -5">
+              
+          </div>
+      </div>
+      <div class="hero-fragment"> </div>
+    </section> -->
+    
+     <section class="hero is-primary hero-gradient is-medium">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns">
+            <div class="column is-5">
+              <h1 class="title is-size-1">
+                Innovate banking, <br>
+                Launch products, <br>
+                Shape data
+              </h1>
+              <p class="subtitle is-size-5">
+                 APIs enable secure, controlled, and cost-effective access to data and/or functionality. It is relevant to stress that “open” does not mean that every third party can access a bank’s system at their discretion.              </p>
+              <p>
+                <a href="" class="button is-primary is-medium">Find your API</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hero-fragment"> </div>
+    </section>
+
+    <section class="landing-features">
+      <div class="container">
+          <div class="columns">
+              <div class="column is-6 has-text-centered">
+              <a href="#" th:href="@{/fabapis/smartbank}">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="icon-container image is-5by3">
+                      <img src="/images/smart-banking.svg" alt="Placeholder image">
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content">
+                        <p class="title is-4">Smart Bank</p>
+                      </div>
+                    </div>
+                    <div class="content">
+                      <a>Explore our Smart Bank APIs</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    		
+    		<div class="column column is-6 has-text-centered">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="icon-container image is-5by3">
+                    <a href="#" th:href="@{/fabapis/openbank}">
+                      <img src="/images/safe-icon.svg" alt="Placeholder image">
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content">
+                      <p class="title is-4">Open Banking</p>
+                      </div>
+                    </div>
+                    <div class="content">
+                      <a>Explore our Open Banking APIs</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- <div class="column">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image is-5by3">
+                    <a href="payment.html">
+                      <img src="/images/mass-payment.png" alt="Placeholder image">
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content">
+                        <p class="title is-4">Payments</p>
+                      </div>
+                    </div>
+                    <div class="content">
+                      <a>Explore our Payment APIs</a>
+                    </div>
+                  </div>
+                </div>
+              </div>          
+            </div>
+            
+            <div class="columns">
+              <div class="column">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image is-5by3">
+                    <a href="ecommerce.html">
+                      <img src="/images/ecommerce-API.gif" alt="Placeholder image">
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content">
+                        <p class="title is-4">E-Commerce </p>
+                      </div>
+                    </div>
+                    <div class="content">
+                      <a>Explore our E-Commerce APIs</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    		
+    		<div class="column">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image is-5by3">
+                    <a href="financial.html">
+                      <img src="/images/bw-market-graph.png" alt="Placeholder image">
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content">
+                        <p class="title is-4">Financial</p>
+                      </div>
+                    </div>
+                    <div class="content">
+                      <a>Explore our  Financial APIs</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="column">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image is-5by3">
+                    <a href="investments.html">
+                      <img src="/images/images.jpeg" alt="Placeholder image">
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content">
+                        <p class="title is-4">Investments</p>
+                      </div>
+                    </div>
+                    <div class="content">
+                      <a>Explore our Investments API</a>
+                    </div>
+                  </div>
+                </div>
+              </div>  -->         
+            </div>
+      </div>
+      <!-- /.container -->
+    </section>
+    <!-- /.landing-features -->
+
+    <section class="content">
+      <div class="container">
+        <div class="columns is-multiline">
+          <div class="column is-half">
+            <h1>Welcome to a new world of financial innovation</h1>
+            <p>FAB’s openbanking sandbox is a selfcontained environment that provides fintechs, developers a simulated banking space where they can experiment and create real world apps and services.</p>
+            <p>The platform consists of over 200 APIs and 900 end points covering retail, corporate and SME business lines. Developers also have access to over three million simulated customer transactions based on the BIAN (Banking Industry Architecture Network) model.</p>
+            <p><a href="">Learn More</a></p>
+          </div>
+
+          <div class="column is-half">
+            <img src="/images/home-image-1.png" alt="">
+          </div>
+
+          
+      </div>
+      <!-- /.container -->
+    </section>
+    <!-- /.content -->
+
+    <footer class="footer is-primary">
+      <div class="content has-text-centered">
+        <div class="columns is-multiline">
+          <div class="column is-12">
+            <img src="images/fab-logo.svg" width="100px" alt="">
+          </div>
+          <div class="column is-12">
+            <p>Copyright &copy; 2019 FAB. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="text/javascript" src="lib/main.js"></script>
+  </body>
+</html>
