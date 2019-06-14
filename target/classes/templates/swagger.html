@@ -81,16 +81,64 @@
     <!-- /.page-breadcrumb -->
 
    <section class="section">
-      <div class="container">
-        <div class="columns is-multiline">
-          <div class="columns is-multiline" th:each="path : ${paths.paths}">
+   <div class="columns is-multiline">
+   <div class="column is-5">
+   	<div >
+        <pre class='code code-css'>
+          <code th:text=${paths.swaggerName}>Swagger</code>
+        </pre>
+	  </div>
+   </div>
+   	<div class="column is-7">
+      
+          <div class="columns is-multiline" th:each="path : ${paths.paths}" th:if="${path.httpVerb == 'GET'}">          
+	          <div class="request-block__container get">
+	              <header class="request-block__header">
+	                <span class="tag is-info is-medium"  th:text="${path.httpVerb}"/>	                
+	               <code title="request-block__content" th:text="${path.path}"></code>
+	               <span class="request-block__container" th:text="${path.operationName}"></span>
+	              </header>
+	              <section class="request-block__content content">
+	                <div class="columns is-multiline">
+	                  <div class="column is-5">
+	                    <h6 class="request-block__content--title">
+	                      Name
+	                    </h6>
+	                    <p><strong>Body</strong> <small class="has-text-danger">*required</small></p>
+	                    <p><code>(body)</code></p>
+	                  </div>
+	                  <div class="column is-7">
+	                    <h6 class="request-block__content--title">
+	                      Description
+	                    </h6>
+	
+	                    <p></p>
+	
+	                    <div class="highlight-code">
+	                        <pre class='code code-css'>
+	                          <code>
+	                            button {
+	                              width:20px;
+	                              height:28px;
+	                              color:#fff;
+	                              font-size:28px;
+	                              padding:11px 15px;
+	                              border-radius:5px;
+	                              background:#14ADE5;
+	                            }
+	                        </code>
+	                        </pre>
+	                    </div>
+	                  </div>
+	                </div>
+	              </section>
+	            </div>
           
+          </div>
+		<div class="columns is-multiline" th:each="path : ${paths.paths}" th:if="${path.httpVerb == 'POST'}">          
 	          <div class="request-block__container post">
 	              <header class="request-block__header">
-	                <span th:if="${path.httpVerb == 'GET'}" class="tag is-success is-medium" style="background-color:blue" th:text="${path.httpVerb}"/>
-	                <span th:if="${path.httpVerb == 'POST'}" class="tag is-success is-medium" style="background-color:green" th:text="${path.httpVerb}"/>
-	                <span th:if="${path.httpVerb == 'PUT'}" class="tag is-success is-medium" style="background-color:orange" th:text="${path.httpVerb}"/>
-	                <span th:if="${path.httpVerb == 'DELETE'}" class="tag is-success is-medium" style="background-color:red" th:text="${path.httpVerb}"/>
+	                <span class="tag is-success is-medium"  th:text="${path.httpVerb}"/>	                
 	               <code title="request-block__content" th:text="${path.path}"></code>
 	               <span class="request-block__container" th:text="${path.operationName}"></span>
 	              </header>
@@ -129,94 +177,93 @@
 	                </div>
 	              </section>
 	            </div>
-          
           </div>
-
-             
-
-            <div class="request-block__container put">
-              <header class="request-block__header">
-                <span class="tag is-warning is-medium">PUT</span>
-                <code>/pet</code>
-                <span class="request-block__header--desc">
-                  Add a new pet to the store
-                </span>
-              </header>
-              <section class="request-block__content content">
-                <div class="columns is-multiline">
-                  <div class="column is-4">
-                    <h6 class="request-block__content--title">
-                      Name
-                    </h6>
-                  </div>
-                  <div class="column is-8">
-                    <h6 class="request-block__content--title">
-                      Description
-                    </h6>
-
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi, voluptate, maiores voluptatem sit enim sequi eveniet itaque eos officia aliquid eius repudiandae quo harum animi officiis at ad! Neque!</p>
-
-                    <div class="highlight-code">
-                        <pre class='code code-css'>
-                          <code>
-                            button {
-                              width:20px;
-                              height:28px;
-                              color:#fff;
-                              font-size:28px;
-                              padding:11px 15px;
-                              border-radius:5px;
-                              background:#14ADE5;
-                            }
-                        </code>
-                        </pre>
-                    </div>
-                  </div>
-                </div>
-              </section>
-            </div>
-
-            <div class="request-block__container get">
-              <header class="request-block__header">
-                <span class="tag is-info is-medium">GET</span>
-                <code>/pet/findByStatus</code>
-                <span class="request-block__header--desc">
-                  Add a new pet to the store
-                </span>
-              </header>
-              <section class="request-block__content content">
-                <div class="columns is-multiline">
-                  <div class="column is-4">
-                    <h6 class="request-block__content--title">
-                      Name
-                    </h6>
-                  </div>
-                  <div class="column is-8">
-                    <h6 class="request-block__content--title">
-                      Description
-                    </h6>
-
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi, voluptate, maiores voluptatem sit enim sequi eveniet itaque eos officia aliquid eius repudiandae quo harum animi officiis at ad! Neque!</p>
-
-                    <div class="highlight-code">
-                        <pre class='code code-css'>
-                          <code>
-                            button {
-                              width:20px;
-                              height:28px;
-                              color:#fff;
-                              font-size:28px;
-                              padding:11px 15px;
-                              border-radius:5px;
-                              background:#14ADE5;
-                            }
-                        </code>
-                        </pre>
-                    </div>
-                  </div>
-                </div>
-              </section>
-            </div> 
+          <div class="columns is-multiline" th:each="path : ${paths.paths}" th:if="${path.httpVerb == 'PUT'}">          
+	          <div class="request-block__container put">
+	              <header class="request-block__header">
+	                <span class="tag is-warning is-medium"  th:text="${path.httpVerb}"/>	                
+	               <code title="request-block__header--desc" th:text="${path.path}"></code>
+	               <span class="request-block__container" th:text="${path.operationName}"></span>
+	              </header>
+	              <section class="request-block__content content">
+	                <div class="columns is-multiline">
+	                  <div class="column is-4">
+	                    <h6 class="request-block__content--title">
+	                      Name
+	                    </h6>
+	                    <p><strong>Body</strong> <small class="has-text-danger">*required</small></p>
+	                    <p><code>(body)</code></p>
+	                  </div>
+	                  <div class="column is-8">
+	                    <h6 class="request-block__content--title">
+	                      Description
+	                    </h6>
+	
+	                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi, voluptate, maiores voluptatem sit enim sequi eveniet itaque eos officia aliquid eius repudiandae quo harum animi officiis at ad! Neque!</p>
+	
+	                    <div class="highlight-code">
+	                        <pre class='code code-css'>
+	                          <code>
+	                            button {
+	                              width:20px;
+	                              height:28px;
+	                              color:#fff;
+	                              font-size:28px;
+	                              padding:11px 15px;
+	                              border-radius:5px;
+	                              background:#14ADE5;
+	                            }
+	                        </code>
+	                        </pre>
+	                    </div>
+	                  </div>
+	                </div>
+	              </section>
+	            </div>
+          </div>
+          
+          <div class="columns is-multiline" th:each="path : ${paths.paths}" th:if="${path.httpVerb == 'DELETE'}">          
+	          <div class="request-block__container get">
+	              <header class="request-block__header">
+	                <span class="tag is-info is-medium"  th:text="${path.httpVerb}"/>	                
+	               <code title="request-block__header--desc" th:text="${path.path}"></code>
+	               <span class="request-block__container" th:text="${path.operationName}"></span>
+	              </header>
+	              <section class="request-block__content content">
+	                <div class="columns is-multiline">
+	                  <div class="column is-4">
+	                    <h6 class="request-block__content--title">
+	                      Name
+	                    </h6>
+	                    <p><strong>Body</strong> <small class="has-text-danger">*required</small></p>
+	                    <p><code>(body)</code></p>
+	                  </div>
+	                  <div class="column is-8">
+	                    <h6 class="request-block__content--title">
+	                      Description
+	                    </h6>
+	
+	                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi, voluptate, maiores voluptatem sit enim sequi eveniet itaque eos officia aliquid eius repudiandae quo harum animi officiis at ad! Neque!</p>
+	
+	                    <div class="highlight-code">
+	                        <pre class='code code-css'>
+	                          <code>
+	                            button {
+	                              width:20px;
+	                              height:28px;
+	                              color:#fff;
+	                              font-size:28px;
+	                              padding:11px 15px;
+	                              border-radius:5px;
+	                              background:#14ADE5;
+	                            }
+	                        </code>
+	                        </pre>
+	                    </div>
+	                </div>
+	              </section>
+	            </div>
+          </div>  
 
             <!-- <div class="request-block__container deprecated  has-text-grey-light">
               <header class="request-block__header">
@@ -260,7 +307,9 @@
               </section>
             </div>  -->
 
-          </div>
+
+        </div>
+        </div>
         </div>
       </div>
       

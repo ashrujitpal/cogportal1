@@ -1,9 +1,17 @@
 package com.fab.devportal.utility;
 
+import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.google.cloud.storage.Blob;
+import com.google.cloud.storage.BlobId;
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageOptions;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import io.swagger.models.HttpMethod;
 import io.swagger.models.Model;
@@ -20,12 +28,36 @@ import io.swagger.models.refs.RefFormat;
 import io.swagger.parser.SwaggerParser;
 
 
+
 public class SwaggerUtility {
 	
 
 	public static void main(String[] args) {
 		
-		Swagger swagger = new SwaggerParser().read("/Users/fab/Downloads/API/card-case.json");
+		// The name of the bucket to access
+		 String bucketName = "ashrujit-gcp-storage";
+
+		// The name of the remote file to download
+		 String srcFilename = "api/bian/swaggers/current-account.yaml";
+
+		// Instantiate a Google Cloud Storage client
+		Storage storage = StorageOptions.getDefaultInstance().getService();
+
+		// Get specific file from specified bucket
+		Blob blob = storage.get(BlobId.of(bucketName, srcFilename));
+
+		// Download file to specified path
+		//blob.downloadTo(destFilePath);
+		System.out.println("Size of blob  ::::: " + blob.getSize());
+		
+		byte[] contentInByte = blob.getContent();
+		
+		//String
+		
+		Swagger swagger = new SwaggerParser().parse(new String(blob.getContent()));
+		
+		//System.out.println("Content   :::::    \n" + new String(contentInByte));
+		
 		System.out.println(swagger.getInfo().getDescription());
 		
 		String path = "";
@@ -37,13 +69,13 @@ public class SwaggerUtility {
 			
 			getOperations(swagger, entry.getValue().getOperationMap(), entry.getKey());
 			
-			for(Entry<HttpMethod, Operation> op : entry.getValue().getOperationMap().entrySet()) {
+			/*for(Entry<HttpMethod, Operation> op : entry.getValue().getOperationMap().entrySet()) {
 				
 				System.out.println(op.getKey() + " - " + op.getValue().getOperationId());
 				
 				path= entry.getKey() + ':' + op.getKey() + ':' + op.getValue().getOperationId();
 				
-			}
+			}*/
 			
 		}
 	
@@ -60,7 +92,7 @@ public class SwaggerUtility {
 			
 			for (Parameter parameter : op.getValue().getParameters()) {
 				
-				System.out.println(parameter.getName() + ", ");
+				
 				
 				if (parameter instanceof BodyParameter) {
 		            BodyParameter bp = (BodyParameter) parameter;
@@ -70,13 +102,21 @@ public class SwaggerUtility {
 		            
 		            Map<String, Property> propMap = schema.getProperties();
 		            
-		            for (Entry<String, Property> entry : propMap.entrySet()) {
-		                System.out.println(entry.getKey());
-		                System.out.println(entry.getValue().getExample());
-		                System.out.println(entry.getValue().getDescription());
-		                System.out.println(entry.getValue().getType().toString());
-		                
-		            }
+		            Gson gson = new GsonBuilder().setPrettyPrinting().create(); 
+		            String json = gson.toJson(propMap); 
+		            
+		            System.out.println(gson.toJson(exampleMap));
+		            
+		            //System.out.println(json);
+		            
+		            
+//		            for (Entry<String, Property> entry : propMap.entrySet()) {
+//		                System.out.println(entry.getKey());
+//		                System.out.println(entry.getValue().getExample());
+//		                System.out.println(entry.getValue().getDescription());
+//		                System.out.println(entry.getValue().getType().toString());
+//		                
+//		            }
 				}
 			}
 			

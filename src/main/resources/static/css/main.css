@@ -6947,29 +6947,121 @@ label.panel-block {
   background-color: #fafafa;
   padding: 3rem 1.5rem 6rem; }
 
+html {
+  background-color: #EEEFF4; }
+
 .container {
   padding: 0 1em; }
 
 .hero-gradient {
-  background: linear-gradient(341.94deg, #003087 16.67%, #0072DA 100%);
+  background: url("../images/hero_banner_2.jpg") no-repeat center;
+  background-size: cover;
   position: relative;
   overflow: hidden; }
   .hero-gradient::after {
     content: "";
     position: absolute;
-    bottom: -50%;
-    width: 200%;
+    width: 100%;
     height: 100%;
     z-index: 1;
-    opacity: 0.1;
-    background: white;
-    transform: rotate(-5deg); }
+    background: linear-gradient(341.94deg, rgba(0, 114, 218, 0.2) 16.67%, #003087 100%); }
   .hero-gradient .column {
     position: relative;
-    z-index: 2; }
+    z-index: 5; }
+
+.hero-title {
+  font-size: 4rem;
+  text-transform: uppercase;
+  line-height: 1.4;
+  padding-bottom: 24px; }
+
+.hero-subtitle {
+  padding-bottom: 24px; }
+
+.footer-gradient {
+  background: linear-gradient(341.94deg, #003087 16.67%, #0072DA 100%);
+  color: white;
+  min-height: 300px; }
+
+.hero-fragment {
+  position: absolute;
+  right: -270px;
+  display: block;
+  background: url(../images/fragment.png) no-repeat;
+  background-size: contain;
+  width: 965px;
+  height: 652px;
+  opacity: 0.5; }
+
+.subtitle {
+  opacity: 0.7; }
 
 .landing-features {
-  margin: 64px 0; }
+  margin: 112px 0; }
+  .landing-features .card {
+    box-shadow: 0px 24px 80px rgba(12, 35, 64, 0.05);
+    border-radius: 5px;
+    transform: translateY(0);
+    transition: all 0.3s cubic-bezier(0.47, 0, 0.745, 0.715);
+    overflow: hidden; }
+    .landing-features .card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0px 24px 80px rgba(12, 35, 64, 0.12), 0px 8px 16px rgba(12, 35, 64, 0.05); }
+      .landing-features .card:hover .icon-container:after {
+        transform: translate(-50%, -90%) scale(2, 2);
+        background: linear-gradient(207.29deg, #59A5BB -43.27%, #0072DA 82.98%);
+        box-shadow: 0px 8px 40px rgba(0, 114, 218, 0.26), 0px 4px 16px rgba(0, 43, 124, 0.09);
+        opacity: 1; }
+      .landing-features .card:hover .icon-container img {
+        filter: invert(0.5) sepia(1) hue-rotate(0deg) saturate(1) brightness(2); }
+      .landing-features .card:hover .content p {
+        color: #0072DA; }
+    .landing-features .card .icon-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s ease-in-out;
+      position: relative; }
+      .landing-features .card .icon-container::before {
+        content: "";
+        position: absolute;
+        background: linear-gradient(207.29deg, #ECF4FB -43.27%, #ECF4FB 82.98%);
+        width: 250px;
+        height: 250px;
+        border-radius: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -90%) scale(2, 2);
+        z-index: -1;
+        transition: all 0.25s cubic-bezier(0.47, 0, 0.745, 0.715); }
+      .landing-features .card .icon-container::after {
+        content: "";
+        position: absolute;
+        background: linear-gradient(207.29deg, #59A5BB -43.27%, #0072DA 82.98%);
+        box-shadow: 0px 8px 40px rgba(0, 114, 218, 0.26), 0px 4px 16px rgba(0, 43, 124, 0.09);
+        width: 250px;
+        height: 250px;
+        border-radius: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -90%) scale(1.2, 1.2);
+        z-index: -1;
+        transition: all 0.55s cubic-bezier(0.86, 0, 0.07, 1);
+        opacity: 0; }
+      .landing-features .card .icon-container img {
+        width: 150px !important;
+        margin: 0 auto; }
+    .landing-features .card .title {
+      position: relative;
+      z-index: 2;
+      color: #013E99;
+      text-transform: uppercase; }
+    .landing-features .card .content {
+      position: relative;
+      z-index: 2; }
+      .landing-features .card .content p {
+        color: #59A5BB;
+        transition: all 0.3s ease-in-out; }
 
 .page-breadcrumb {
   padding: 1em 0; }
@@ -7039,3 +7131,22 @@ pre.code code {
   font-size: 13px;
   line-height: 19px;
   color: #ddd; }
+
+.lading-content__h2 {
+  color: #013E99 !important; }
+
+.lading-content p {
+  color: #657F99; }
+
+.pagination-home {
+  margin-top: 32px; }
+
+.api-cards .card-image {
+  background: #000; }
+
+.api-cards .card img {
+  opacity: 0.6;
+  transition: all 0.2s ease-in-out; }
+
+.api-cards .card:hover img {
+  opacity: 1; }

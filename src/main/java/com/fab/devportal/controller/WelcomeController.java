@@ -1,6 +1,16 @@
 package com.fab.devportal.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.google.cloud.storage.Blob;
+import com.google.cloud.storage.BlobId;
+import com.google.cloud.storage.Bucket;
+import com.google.cloud.storage.BucketInfo;
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageOptions;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,6 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fab.devportal.dao.ApiDescTbl;
 import com.fab.devportal.dao.Pager;
+import com.fab.devportal.dao.PathParam;
+import com.fab.devportal.dao.QueryParam;
 import com.fab.devportal.dao.SubApiTbl;
 import com.fab.devportal.dao.SwaggerPath;
 import com.fab.devportal.dao.SwaggerPaths;
@@ -29,7 +41,21 @@ import io.swagger.models.HttpMethod;
 import io.swagger.models.Operation;
 import io.swagger.models.Path;
 import io.swagger.models.Swagger;
+import io.swagger.models.parameters.BodyParameter;
+import io.swagger.models.parameters.Parameter;
+import io.swagger.models.parameters.PathParameter;
+import io.swagger.models.parameters.QueryParameter;
+import io.swagger.models.properties.Property;
 import io.swagger.parser.SwaggerParser;
+
+import io.swagger.inflector.examples.*;
+import io.swagger.inflector.examples.models.Example;
+import io.swagger.inflector.processors.JsonNodeExampleSerializer;
+import io.swagger.util.Json;
+import io.swagger.util.Yaml;
+import java.util.Map;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,7 +79,8 @@ public class WelcomeController {
     
     @Autowired
     private APIDetailsService apiDtlsService;
-	private List<SwaggerPath> params;
+    
+	
 
    
     
@@ -131,31 +158,117 @@ public class WelcomeController {
     	
     	System.out.println("Swagger Name Received from Smart bank page" + swaggerName);
     	
-    	String path ="/Users/fab/Downloads/API/" + swaggerName;
+    	//String path ="https://console.cloud.google.com/storage/browser/ashrujit-gcp-storage/api/bian/swaggers/" + swaggerName;
     	
-    	Swagger swagger = new SwaggerParser().read(path);
+    	// The name of the bucket to access
+    	 String bucketName = "ashrujit-gcp-storage";
+    	 
+    	 Gson gson = new GsonBuilder().setPrettyPrinting().create(); 
+
+    	// The name of the remote file to download
+    	 String srcFilename = "api/bian/swaggers/"+ swaggerName;
+
+    	// The path to which the file should be downloaded
+    	// Path destFilePath = Paths.get("api/bian/swaggers/"+ swaggerName);
+
+    	// Instantiate a Google Cloud Storage client
+    	Storage storage = StorageOptions.getDefaultInstance().getService();
+
+    	// Get specific file from specified bucket
+    	Blob blob = storage.get(BlobId.of(bucketName, srcFilename));
     	
-		System.out.println(swagger.getInfo().getDescription());
-		
+    	byte[] contentInByte = blob.getContent();
+
+    	// Download file to specified path
+    	//blob.downloadTo(destFilePath);
+    	
+    	Swagger swagger = new SwaggerParser().parse(new String(blob.getContent()));
+    	
 		String description = swagger.getInfo().getDescription();
 		
-		
 		SwaggerPaths paths = new SwaggerPaths();
-		params = new ArrayList();
-
+		
+		List<SwaggerPath> params = new ArrayList<SwaggerPath>();
+		
+		paths.setSwaggerName(gson.toJson(new String(contentInByte)));
+		
 		for (Map.Entry<String, Path> entry : swagger.getPaths().entrySet()) {
 			
-			System.out.println(entry.getKey());
-			
-			SwaggerPath swagg = new SwaggerPath();
-			
+			SwaggerPath swagg = new SwaggerPath();			
+						
 			for(Entry<HttpMethod, Operation> op : entry.getValue().getOperationMap().entrySet()) {
-				
-				System.out.println(op.getKey() + " - " + op.getValue().getOperationId());
-				
+		
 				swagg.setPath(entry.getKey());
 				swagg.setHttpVerb(op.getKey().toString());
 				swagg.setOperationName(op.getValue().getOperationId());
+				swagg.setTags(op.getValue().getTags());
+				swagg.setConsumers(op.getValue().getConsumes());
+				swagg.setProducers(op.getValue().getProduces());
+				swagg.setResponseBody(op.getValue().getResponses());
+				swagg.setOperationDesc(op.getValue().getDescription());
+				
+				
+				for (Parameter parameter : op.getValue().getParameters()) {
+					
+					System.out.println(parameter.getName());
+					
+					if (parameter instanceof PathParameter) {
+												
+						 PathParam pparam = new PathParam();
+						 pparam.setName(parameter.getName());
+						 pparam.setIsRequired(parameter.getRequired());
+						 
+						 if(null != swagg.getPathParams()) {
+							 swagg.getPathParams().add(pparam);
+						 }else {
+							 swagg.setPathParams(new ArrayList());
+							 swagg.getPathParams().add(pparam);
+						 }					 
+						 
+					}
+					
+					if (parameter instanceof QueryParameter) {
+						
+						QueryParam pparam = new QueryParam();
+						 pparam.setName(parameter.getName());
+						 pparam.setIsRequired(parameter.getRequired());
+						 
+						 if(null != swagg.getQueryParams()) {
+							 swagg.getQueryParams().add(pparam);
+						 }else {
+							 swagg.setQueryParams(new ArrayList());
+							 swagg.getQueryParams().add(pparam);
+						 }
+						
+					}
+					
+					
+					if (parameter instanceof BodyParameter) {
+			            BodyParameter bp = (BodyParameter) parameter;
+			            io.swagger.models.Model schema = bp.getSchema();
+			            
+			            Map<String,String> exampleMap = bp.getExamples();
+			            
+			            Map<String, Property> propMap = ((io.swagger.models.Model) schema).getProperties();
+			            
+			           
+			            String json = gson.toJson(propMap); 
+			            
+			            System.out.println(json);
+			            System.out.println(gson.toJson(propMap));
+			            
+			            swagg.setRequestBody(json);
+			            
+			            
+			            /*for (Entry<String, Property> entry : propMap.entrySet()) {
+			                System.out.println(entry.getKey());
+			                System.out.println(entry.getValue().getExample());
+			                System.out.println(entry.getValue().getDescription());
+			                System.out.println(entry.getValue().getType().toString());
+			                
+			            }*/
+					}
+				}
 				
 				params.add(swagg);
 				
